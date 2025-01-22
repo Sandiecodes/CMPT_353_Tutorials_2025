@@ -1,0 +1,22 @@
+Install nodes from the official site
+Check installation: open your terminal: node --version
+
+mkdir Your folder name
+cd into the folder
+How to create a nodejs application
+- First have node js installed
+-Open a working folder of your choice
+- Initialize the node js app using the command
+ npm init -y
+
+Install dependencies
+npm install express --save 
+Start application
+  node server.js
+
+  Build docker image
+  - docker build -t nodejs-docker .
+  Run docker image
+    docker run -p 3002:3002 --rm -it nodejs-docker
+
+ 
