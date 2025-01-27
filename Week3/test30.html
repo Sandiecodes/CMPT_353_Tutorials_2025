@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <title> AJAX </title>
+
+</head>
+
+
+<body>
+    
+<script type = "text/javascript">
+
+function sayHello()
+{
+    var http = new XMLHttpRequest();
+    var url = '/sayHello';
+    var params = 'name=' + document.getElementById("input").value;
+       
+    http.open('POST', url, true);
+
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() 
+    { 
+        if(http.readyState == 4 && http.status == 200) 
+        {
+             
+            var response = JSON.parse(http.responseText);
+            console.log(response);
+    
+            document.getElementById("answer").value = response.answer;
+    
+             
+        }
+    };
+
+    http.send(params);
+};
+
+
+
+</script>
+
+
+  <label for="Name"> Name:</label><br> <br>
+  <input id="input" type="text" name="name" value=""><br> <br>
+  <br>
+  <button  onclick= "sayHello()"  > Hello </button>
+  <br>
+
+
+<textarea id="answer">   </textarea>
+
+</body>
+
+</html>
