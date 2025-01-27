@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+    <title> AJAX with fecth </title>
+
+</head>
+
+
+<body>
+    
+<script type = "text/javascript">
+
+function sayHello() {
+    fetch('/sayHello', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'name=' + document.getElementById("input").value
+    }).then(function (response) {
+        return response.text(); 
+    }).then(function (text) {
+        document.getElementById("answer").value = text; 
+    }).catch(function (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+}
+
+
+
+
+</script>
+
+
+  <label for="Name"> Name:</label><br> <br>
+  <input id="input" type="text" name="name" value=""><br> <br>
+  <br>
+  <button  onclick= "sayHello()"  > Hello </button>
+  <br>
+
+
+<textarea id="answer">   </textarea>
+
+</body>
+
+</html>
