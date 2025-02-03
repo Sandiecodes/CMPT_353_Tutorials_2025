@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posting Data</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#saveButton').on('click', function(event) {
+        event.preventDefault();
+
+        const filename = $('#filename').val();
+        const data = $('#data').val();
+
+        if (!filename || !data) {
+          alert('Filename and data are required!');
+          return;
+        }
+
+        $.ajax({
+          url: '/save',
+          type: 'POST',
+          data: {
+            filename: filename,
+            data: data
+          },
+          contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+          dataType: 'text',
+          success: function(response) {
+            if (response === 'ok') {
+              alert('Data saved successfully!');
+            } else {
+              alert('Failed to save data: ' + response);
+            }
+          },
+          error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('Error connecting to the server.');
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Posting Data</h1>
+  <form>
+    <label for="filename">Filename:</label>
+    <input type="text" id="filename" name="filename" placeholder="Enter filename" required>
+    <br><br>
+    <label for="data">Data:</label>
+    <textarea id="data" name="data" rows="5" cols="40" placeholder="Enter your data here" required></textarea>
+    <br><br>
+    <button id="saveButton" type="button">Save Data</button>
+  </form>
+</body>
+</html>
