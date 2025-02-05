@@ -9,6 +9,8 @@ const HOST = '0.0.0.0';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 // Serve the posting.html directly at the root route
 app.get('/', (req, res) => {
