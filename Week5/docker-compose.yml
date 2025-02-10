@@ -1,0 +1,33 @@
+services:
+  mysql1:
+    image: mysql:8.0
+    container_name: db1
+    ports:
+      - "33061:3306" 
+    environment:  
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - ./mysql_data:/var/lib/mysql  
+  node1:
+    build: .
+    container_name: nodejs1
+    ports:
+      - "8080:8080"
+    # command: ["node", "app_promise.js"]    
+    volumes:
+      - .:/code
+    environment:
+      DB_HOST: mysql1
+      DB_USER: root
+      DB_PASSWORD: admin
+      DB_PORT: 3306
+      DB_DATABASE: db2  
+    depends_on:
+      - mysql1
+        #condition: service_healthy
+volumes:
+  mysql_data:        
+
+
+      
+
