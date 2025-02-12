@@ -7,13 +7,18 @@ services:
     environment:  
       MYSQL_ROOT_PASSWORD: admin
     volumes:
-      - ./mysql_data:/var/lib/mysql  
+      - ./mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost","-u", "root", "-padmin"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s  
   node1:
     build: .
     container_name: nodejs1
     ports:
-      - "8080:8080"
-    # command: ["node", "app_promise.js"]    
+      - "8080:8080"   
     volumes:
       - .:/code
     environment:
@@ -23,8 +28,8 @@ services:
       DB_PORT: 3306
       DB_DATABASE: db2  
     depends_on:
-      - mysql1
-        #condition: service_healthy
+      mysql1:
+         condition: service_healthy
 volumes:
   mysql_data:        
 
