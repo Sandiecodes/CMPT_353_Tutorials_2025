@@ -13,7 +13,7 @@ const HOST = '0.0.0.0';
 //Set up the connection to the CouchDB server
 //Environment variables
 // --- Environment Variables ---
-const COUCHDB_URL = process.env.COUCHDB_URL || 'http://admin:password@couchdb1:5984';
+const COUCHDB_URL = process.env.COUCHDB_URL || 'http://admin:password@couchdb:5984';
 const COUCHDB_DB = process.env.COUCHDB_DB || 'questionsdb';
 
 //Create a new instance of nano with the CouchDB URL
