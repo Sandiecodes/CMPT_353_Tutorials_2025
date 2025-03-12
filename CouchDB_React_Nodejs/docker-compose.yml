@@ -17,12 +17,13 @@ services:
     - couchdb
   ports:
     - "8080:8080"
-  command: ["bin/bash"]  
   environment:
     - COUCHDB_URL=http://admin:password@couchdb:5984
     - COUCHDB_DB=questionsdb
   volumes:
     - ./Backend:/backend
+  working_dir: /backend  
+  command: ["sh", "-c", "npm install --silent && node server.js"]
   stdin_open: true
   tty: true
  web:
@@ -34,3 +35,4 @@ services:
    - ./frontend:/react-app
   stdin_open: true
   tty: true 
+  command: ["npm", "start"]
