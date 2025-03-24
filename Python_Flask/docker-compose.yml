@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+ python1:
+  build: .
+  container_name: p1
+  #command: flask run --host=0.0.0.0
+  ports:
+   - "80:5000"
+  volumes:
+   - ./:/app
+  environment:
+   #- FLASK_APP=filename
+   - FLASK_APP=${FLASK_APP}
+   - FLASK_ENV=development
+   #- FLASK_ENV=production
+   

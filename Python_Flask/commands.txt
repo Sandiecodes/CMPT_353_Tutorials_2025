@@ -1,0 +1,1 @@
+FLASK_APP=Hello1.py docker-compose up --build
