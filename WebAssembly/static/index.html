@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>WebAssembly Example</title>
+  </head>
+<body>
+    <h1>WebAssembly Example</h1>
+    <button onclick="callAlert()">Call Alert</button>
+    <br><br>
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" value="10"><br><br>
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" value="20"><br><br>
+    <button onclick="callAdd()">Add Numbers</button>
+    <p id="addResult"></p>
+    <br><br>
+    <label for="str1">String 1:</label>
+    <input type="text" id="str1" value="Hello"><br><br>
+    <label for="str2">String 2:</label>
+    <input type="text" id="str2" value=" World!"><br><br>
+    <button onclick="callConcat()">Concatenate Strings</button>
+    <p id="concatResult"></p>
+    <script type="module" src="index.js"></script>
+</body>
+
+</html>
+
